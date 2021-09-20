@@ -1,3 +1,3 @@
-type Middleware = (next: Function, ...rest: any) => any;
+type Middleware = (next: (...args: any[]) => any, ...rest: any) => any;
 
 export default Middleware;

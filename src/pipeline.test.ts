@@ -11,10 +11,14 @@ test('runs middleware in order', () => {
     };
 
     const pipeline = new Pipeline([middleware1, middleware2]);
-    
-    const result = pipeline.run((param1: string, param2: string) => {
-        return `initial-call(${param1}, ${param2})`;
-    }, 'alice', 'robert');
 
-    expect(result).toBe('middleware1-before/middleware2-before/initial-call(-ecila, -trebor)/middleware2-after/middleware1-after');
+    const call = (param1: string, param2: string) => {
+        return `initial-call(${param1}, ${param2})`;
+    };
+    
+    const result1 = pipeline.run(call, 'alice', 'robert');
+    const result2 = pipeline.run(call, 'purple', 'green');
+
+    expect(result1).toBe('middleware1-before/middleware2-before/initial-call(-ecila, -trebor)/middleware2-after/middleware1-after');
+    expect(result2).toBe('middleware1-before/middleware2-before/initial-call(-elprup, -neerg)/middleware2-after/middleware1-after');
 });
