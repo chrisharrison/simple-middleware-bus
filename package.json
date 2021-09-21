@@ -1,6 +1,6 @@
 {
   "name": "@chrisharrison/simple-middleware-pipeline",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A simple Typescript middleware pipeline.",
   "license": "MIT",
   "authors": [
