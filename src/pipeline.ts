@@ -10,7 +10,7 @@ class Pipeline {
     run(call: (...args: any[]) => any, ...params: any) {
       let stack = call;
 
-      [...this.middlewares].reverse().forEach((middleware: Middleware) => {
+      [...this.middlewares].forEach((middleware: Middleware) => {
         const previousStack = stack;
         stack = (...rest: any) => middleware(previousStack, ...rest);
       });
